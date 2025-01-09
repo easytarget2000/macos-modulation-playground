@@ -7,7 +7,6 @@ final class AudioToolboxModulator : Modulator {
 
     let sampleRate: Double = 44100.0
     let durationInSec: Double = 1
-    let frequency: Double = 330.0
     let amplitude: Double = 0.5
     let numberOfChannels: Int = 1
     let bitsPerChannel: Int = 32
@@ -22,13 +21,13 @@ final class AudioToolboxModulator : Modulator {
             mFramesPerPacket: .init(self.framesPerPacket),
             mBytesPerFrame: .init(self.bytesPerFrame),
             mChannelsPerFrame: .init(self.numberOfChannels),
-            mBitsPerChannel: .init(bitsPerChannel),
+            mBitsPerChannel: .init(self.bitsPerChannel),
             mReserved: 0
         )
     }()
 
     private var bytesPerPacket: Int {
-        self.bitsPerChannel * self.numberOfChannels / 8
+        (self.bitsPerChannel * self.numberOfChannels) / 8
     }
 
     private var bytesPerFrame: Int {
@@ -70,7 +69,9 @@ final class AudioToolboxModulator : Modulator {
             return
         }
 
-        let frameCount: Int = .init(sampleRate * durationInSec)
+        let frameCount: Int = .init(
+            self.sampleRate * .init(self.numberOfChannels) * self.durationInSec
+        )
         var samples = self.samples(for: frameCount)
         try self.queueSamples(&samples)
 
@@ -78,8 +79,11 @@ final class AudioToolboxModulator : Modulator {
     }
 
     private func samples(for count: Int) -> [Float] {
+        let frequency: Double = 330.0
+
         return (0 ..< count).map { frameIndex in
-            let time: Double = .init(frameIndex) / sampleRate
+            let time: Double
+            = .init(frameIndex) / self.sampleRate / .init(self.numberOfChannels)
             let sample: Float
             = .init(amplitude * sin(2.0 * .pi * frequency * time))
 
