@@ -1,26 +1,29 @@
 import AudioToolbox
 import Foundation
 
-// Audio settings
+// MARK: - Configuration
+
 let sampleRate = 44100.0
 let duration = 1.0  // seconds
 let frequency = 440.0  // Hz (A4 note)
 let amplitude = 0.5
 
-// Calculate total number of frames
-let frameCount = UInt32(sampleRate * duration)
+// MARK: - Sample Generation
 
-// Generate sine wave samples
-var samples = [Float](repeating: 0.0, count: Int(frameCount))
-for i in 0..<Int(frameCount) {
-    let time = Double(i) / sampleRate
+let frameCount: Int = .init(sampleRate * duration)
+
+var samples: [Float] = (0 ..< frameCount).map { frameIndex in
+    let time: Double = .init(frameIndex) / sampleRate
     let sample: Float = .init(amplitude * sin(2.0 * .pi * frequency * time))
-    if i % 8 == 0 {
-        samples[i] = sample + .init(sin(16.0 * .pi * 3 * time))
+
+    return if frameIndex % 8 == 0 {
+        .init(time)
     } else {
-        samples[i] = sample
+        sample
     }
 }
+
+// MARK: - Playback Setup
 
 var audioBuffer: AudioBuffer = .init()
 withUnsafeMutablePointer(to: &samples) { samplesData in
@@ -83,12 +86,11 @@ guard status == noErr else {
     exit(1)
 }
 
-// Start playing
+// MARK: - Playback
+
 AudioQueueStart(queue, nil)
 
-// Wait for playback to complete
 Thread.sleep(forTimeInterval: duration + 0.1)
 
-// Clean up
 AudioQueueStop(queue, true)
 AudioQueueDispose(queue, true)
