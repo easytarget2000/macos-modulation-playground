@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    let modulator: Modulator
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button("Play") {
+                Task {
+                    try await modulator.playSound()
+                }
+            }
         }
-        .padding()
+        .task {
+            try? modulator.setUp()
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(modulator: PreviewModulator())
 }

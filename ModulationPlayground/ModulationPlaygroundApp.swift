@@ -11,7 +11,7 @@ import SwiftUI
 struct ModulationPlaygroundApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(modulator: AudioToolboxModulator())
         }
     }
 }
