@@ -10,24 +10,16 @@ let amplitude = 0.5
 // Calculate total number of frames
 let frameCount = UInt32(sampleRate * duration)
 
-// Create the audio buffer
-var streamBasicDescription = AudioStreamBasicDescription(
-    mSampleRate: sampleRate,
-    mFormatID: kAudioFormatLinearPCM,
-    mFormatFlags: kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked,
-    mBytesPerPacket: 4,
-    mFramesPerPacket: 1,
-    mBytesPerFrame: 4,
-    mChannelsPerFrame: 1,
-    mBitsPerChannel: 32,
-    mReserved: 0
-)
-
 // Generate sine wave samples
 var samples = [Float](repeating: 0.0, count: Int(frameCount))
 for i in 0..<Int(frameCount) {
     let time = Double(i) / sampleRate
-    samples[i] = Float(amplitude * sin(2.0 * .pi * frequency * time))
+    let sample: Float = .init(amplitude * sin(2.0 * .pi * frequency * time))
+    if i % 8 == 0 {
+        samples[i] = sample + .init(sin(16.0 * .pi * 3 * time))
+    } else {
+        samples[i] = sample
+    }
 }
 
 var audioBuffer: AudioBuffer = .init()
@@ -44,7 +36,20 @@ let bufferList = AudioBufferList(
     mBuffers: audioBuffer
 )
 
-// Set up and configure audio queue
+
+// Create the audio buffer
+var streamBasicDescription: AudioStreamBasicDescription = .init(
+    mSampleRate: sampleRate,
+    mFormatID: kAudioFormatLinearPCM,
+    mFormatFlags: kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked,
+    mBytesPerPacket: 4,
+    mFramesPerPacket: 1,
+    mBytesPerFrame: 4,
+    mChannelsPerFrame: 1,
+    mBitsPerChannel: 32,
+    mReserved: 0
+)
+
 var audioQueue: AudioQueueRef?
 var status = AudioQueueNewOutput(
     &streamBasicDescription,
