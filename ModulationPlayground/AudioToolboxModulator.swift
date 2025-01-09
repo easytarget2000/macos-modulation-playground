@@ -41,8 +41,17 @@ final class AudioToolboxModulator : Modulator {
 
         guard initStatus == noErr else {
             print("Error creating audio queue")
-            exit(1)
+            return
         }
+    }
+
+    func tearDown() throws {
+        guard let queue else {
+            return
+        }
+
+        AudioQueueStop(queue, true)
+        AudioQueueDispose(queue, true)
     }
 
     func playSound() async throws {
@@ -55,11 +64,6 @@ final class AudioToolboxModulator : Modulator {
         try self.queueSamples(&samples)
 
         AudioQueueStart(queue, nil)
-
-        try await Task.sleep(for: .seconds(durationInSec))
-
-        AudioQueueStop(queue, true)
-        AudioQueueDispose(queue, true)
     }
 
     private func samples(for count: Int) -> [Float] {
@@ -92,7 +96,7 @@ final class AudioToolboxModulator : Modulator {
             )
         }
 
-        let bufferList = AudioBufferList(
+        let _: AudioBufferList = .init(
             mNumberBuffers: 1,
             mBuffers: audioBuffer
         )

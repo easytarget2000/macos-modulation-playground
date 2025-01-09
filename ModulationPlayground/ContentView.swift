@@ -22,6 +22,9 @@ struct ContentView: View {
         .task {
             try? modulator.setUp()
         }
+        .onDisappear {
+            try? modulator.tearDown()
+        }
     }
 }
 
