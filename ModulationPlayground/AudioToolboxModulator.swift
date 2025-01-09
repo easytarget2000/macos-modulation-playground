@@ -7,22 +7,33 @@ final class AudioToolboxModulator : Modulator {
 
     let sampleRate: Double = 44100.0
     let durationInSec: Double = 1
-    let frequency: Double = 440.0
+    let frequency: Double = 330.0
     let amplitude: Double = 0.5
+    let numberOfChannels: Int = 1
+    let bitsPerChannel: Int = 32
+    let framesPerPacket: Int = 1
 
     private lazy var streamBasicDescription: AudioStreamBasicDescription = {
         .init(
-            mSampleRate: sampleRate,
+            mSampleRate: self.sampleRate,
             mFormatID: kAudioFormatLinearPCM,
             mFormatFlags: kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked,
-            mBytesPerPacket: 4,
-            mFramesPerPacket: 1,
-            mBytesPerFrame: 4,
-            mChannelsPerFrame: 1,
-            mBitsPerChannel: 32,
+            mBytesPerPacket: .init(self.bytesPerPacket),
+            mFramesPerPacket: .init(self.framesPerPacket),
+            mBytesPerFrame: .init(self.bytesPerFrame),
+            mChannelsPerFrame: .init(self.numberOfChannels),
+            mBitsPerChannel: .init(bitsPerChannel),
             mReserved: 0
         )
     }()
+
+    private var bytesPerPacket: Int {
+        self.bitsPerChannel * self.numberOfChannels / 8
+    }
+
+    private var bytesPerFrame: Int {
+        self.framesPerPacket * self.bytesPerPacket
+    }
 
     private var queue: AudioQueueRef?
 
@@ -90,8 +101,8 @@ final class AudioToolboxModulator : Modulator {
         var audioBuffer: AudioBuffer = .init()
         withUnsafeMutablePointer(to: &samples) { samplesData in
             audioBuffer = .init(
-                mNumberChannels: 1,
-                mDataByteSize: .init(samplesCount * 4),
+                mNumberChannels: .init(self.numberOfChannels),
+                mDataByteSize: .init(samplesCount * self.bytesPerFrame),
                 mData: samplesData
             )
         }
@@ -103,16 +114,26 @@ final class AudioToolboxModulator : Modulator {
 
         // Create and enqueue buffer
         var buffer: AudioQueueBufferRef?
-        let allocationStatus = AudioQueueAllocateBuffer(queue, UInt32(samplesCount * 4), &buffer)
-        guard allocationStatus == noErr, let audioBuffer = buffer else {
+        let allocationStatus = AudioQueueAllocateBuffer(
+            queue,
+            .init(samplesCount * self.bytesPerFrame),
+            &buffer
+        )
+        guard allocationStatus == noErr, let buffer else {
             print("Error allocating buffer")
             return
         }
 
-        audioBuffer.pointee.mAudioDataByteSize = UInt32(samplesCount * 4)
-        memcpy(audioBuffer.pointee.mAudioData, samples, Int(samplesCount * 4))
+        buffer.pointee.mAudioDataByteSize
+        = .init(samplesCount * self.bytesPerFrame)
 
-        let enqueueStatus = AudioQueueEnqueueBuffer(queue, audioBuffer, 0, nil)
+        memcpy(
+            buffer.pointee.mAudioData,
+            samples,
+            Int(samplesCount * self.bytesPerFrame)
+        )
+
+        let enqueueStatus = AudioQueueEnqueueBuffer(queue, buffer, 0, nil)
         guard enqueueStatus == noErr else {
             print("Error enqueuing buffer")
             return
