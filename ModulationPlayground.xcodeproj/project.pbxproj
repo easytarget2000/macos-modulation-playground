@@ -6,32 +6,63 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXCopyFilesBuildPhase section */
-		30FA9E532D2ECA6700A84B9E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
+/* Begin PBXContainerItemProxy section */
+		30386C162D302EC60048542C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30386BFC2D302EC50048542C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30386C032D302EC50048542C;
+			remoteInfo = ModulationPlayground;
 		};
-/* End PBXCopyFilesBuildPhase section */
+		30386C202D302EC60048542C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30386BFC2D302EC50048542C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30386C032D302EC50048542C;
+			remoteInfo = ModulationPlayground;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30FA9E552D2ECA6700A84B9E /* ModulationPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ModulationPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
+		30386C042D302EC50048542C /* ModulationPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulationPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30386C152D302EC60048542C /* ModulationPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModulationPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30386C1F2D302EC60048542C /* ModulationPlaygroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModulationPlaygroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		30FA9E572D2ECA6700A84B9E /* ModulationPlayground */ = {
+		30386C062D302EC50048542C /* ModulationPlayground */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ModulationPlayground;
+			sourceTree = "<group>";
+		};
+		30386C182D302EC60048542C /* ModulationPlaygroundTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ModulationPlaygroundTests;
+			sourceTree = "<group>";
+		};
+		30386C222D302EC60048542C /* ModulationPlaygroundUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ModulationPlaygroundUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		30FA9E522D2ECA6700A84B9E /* Frameworks */ = {
+		30386C012D302EC50048542C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C122D302EC60048542C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C1C2D302EC60048542C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,18 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		30FA9E4C2D2ECA6700A84B9E = {
+		30386BFB2D302EC50048542C = {
 			isa = PBXGroup;
 			children = (
-				30FA9E572D2ECA6700A84B9E /* ModulationPlayground */,
-				30FA9E562D2ECA6700A84B9E /* Products */,
+				30386C062D302EC50048542C /* ModulationPlayground */,
+				30386C182D302EC60048542C /* ModulationPlaygroundTests */,
+				30386C222D302EC60048542C /* ModulationPlaygroundUITests */,
+				30386C052D302EC50048542C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		30FA9E562D2ECA6700A84B9E /* Products */ = {
+		30386C052D302EC50048542C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30FA9E552D2ECA6700A84B9E /* ModulationPlayground */,
+				30386C042D302EC50048542C /* ModulationPlayground.app */,
+				30386C152D302EC60048542C /* ModulationPlaygroundTests.xctest */,
+				30386C1F2D302EC60048542C /* ModulationPlaygroundUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,64 +95,158 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		30FA9E542D2ECA6700A84B9E /* ModulationPlayground */ = {
+		30386C032D302EC50048542C /* ModulationPlayground */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30FA9E5C2D2ECA6700A84B9E /* Build configuration list for PBXNativeTarget "ModulationPlayground" */;
+			buildConfigurationList = 30386C292D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlayground" */;
 			buildPhases = (
-				30FA9E512D2ECA6700A84B9E /* Sources */,
-				30FA9E522D2ECA6700A84B9E /* Frameworks */,
-				30FA9E532D2ECA6700A84B9E /* CopyFiles */,
+				30386C002D302EC50048542C /* Sources */,
+				30386C012D302EC50048542C /* Frameworks */,
+				30386C022D302EC50048542C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				30FA9E572D2ECA6700A84B9E /* ModulationPlayground */,
+				30386C062D302EC50048542C /* ModulationPlayground */,
 			);
 			name = ModulationPlayground;
 			packageProductDependencies = (
 			);
 			productName = ModulationPlayground;
-			productReference = 30FA9E552D2ECA6700A84B9E /* ModulationPlayground */;
-			productType = "com.apple.product-type.tool";
+			productReference = 30386C042D302EC50048542C /* ModulationPlayground.app */;
+			productType = "com.apple.product-type.application";
+		};
+		30386C142D302EC60048542C /* ModulationPlaygroundTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30386C2C2D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlaygroundTests" */;
+			buildPhases = (
+				30386C112D302EC60048542C /* Sources */,
+				30386C122D302EC60048542C /* Frameworks */,
+				30386C132D302EC60048542C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30386C172D302EC60048542C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				30386C182D302EC60048542C /* ModulationPlaygroundTests */,
+			);
+			name = ModulationPlaygroundTests;
+			packageProductDependencies = (
+			);
+			productName = ModulationPlaygroundTests;
+			productReference = 30386C152D302EC60048542C /* ModulationPlaygroundTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		30386C1E2D302EC60048542C /* ModulationPlaygroundUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30386C2F2D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlaygroundUITests" */;
+			buildPhases = (
+				30386C1B2D302EC60048542C /* Sources */,
+				30386C1C2D302EC60048542C /* Frameworks */,
+				30386C1D2D302EC60048542C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30386C212D302EC60048542C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				30386C222D302EC60048542C /* ModulationPlaygroundUITests */,
+			);
+			name = ModulationPlaygroundUITests;
+			packageProductDependencies = (
+			);
+			productName = ModulationPlaygroundUITests;
+			productReference = 30386C1F2D302EC60048542C /* ModulationPlaygroundUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		30FA9E4D2D2ECA6700A84B9E /* Project object */ = {
+		30386BFC2D302EC50048542C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					30FA9E542D2ECA6700A84B9E = {
+					30386C032D302EC50048542C = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					30386C142D302EC60048542C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 30386C032D302EC50048542C;
+					};
+					30386C1E2D302EC60048542C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 30386C032D302EC50048542C;
 					};
 				};
 			};
-			buildConfigurationList = 30FA9E502D2ECA6700A84B9E /* Build configuration list for PBXProject "ModulationPlayground" */;
+			buildConfigurationList = 30386BFF2D302EC50048542C /* Build configuration list for PBXProject "ModulationPlayground" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 30FA9E4C2D2ECA6700A84B9E;
+			mainGroup = 30386BFB2D302EC50048542C;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 30FA9E562D2ECA6700A84B9E /* Products */;
+			productRefGroup = 30386C052D302EC50048542C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				30FA9E542D2ECA6700A84B9E /* ModulationPlayground */,
+				30386C032D302EC50048542C /* ModulationPlayground */,
+				30386C142D302EC60048542C /* ModulationPlaygroundTests */,
+				30386C1E2D302EC60048542C /* ModulationPlaygroundUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		30386C022D302EC50048542C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C132D302EC60048542C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C1D2D302EC60048542C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		30FA9E512D2ECA6700A84B9E /* Sources */ = {
+		30386C002D302EC50048542C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C112D302EC60048542C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30386C1B2D302EC60048542C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,8 +255,21 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		30386C172D302EC60048542C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30386C032D302EC50048542C /* ModulationPlayground */;
+			targetProxy = 30386C162D302EC60048542C /* PBXContainerItemProxy */;
+		};
+		30386C212D302EC60048542C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30386C032D302EC50048542C /* ModulationPlayground */;
+			targetProxy = 30386C202D302EC60048542C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		30FA9E5A2D2ECA6700A84B9E /* Debug */ = {
+		30386C272D302EC60048542C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -190,7 +332,7 @@
 			};
 			name = Debug;
 		};
-		30FA9E5B2D2ECA6700A84B9E /* Release */ = {
+		30386C282D302EC60048542C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -245,46 +387,160 @@
 			};
 			name = Release;
 		};
-		30FA9E5D2D2ECA6700A84B9E /* Debug */ = {
+		30386C2A2D302EC60048542C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ModulationPlayground/ModulationPlayground.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ModulationPlayground/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		30FA9E5E2D2ECA6700A84B9E /* Release */ = {
+		30386C2B2D302EC60048542C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ModulationPlayground/ModulationPlayground.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ModulationPlayground/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		30386C2D2D302EC60048542C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlaygroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ModulationPlayground.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ModulationPlayground";
+			};
+			name = Debug;
+		};
+		30386C2E2D302EC60048542C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlaygroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ModulationPlayground.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ModulationPlayground";
+			};
+			name = Release;
+		};
+		30386C302D302EC60048542C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlaygroundUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ModulationPlayground;
+			};
+			name = Debug;
+		};
+		30386C312D302EC60048542C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.ezytarget.ModulationPlaygroundUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ModulationPlayground;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30FA9E502D2ECA6700A84B9E /* Build configuration list for PBXProject "ModulationPlayground" */ = {
+		30386BFF2D302EC50048542C /* Build configuration list for PBXProject "ModulationPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				30FA9E5A2D2ECA6700A84B9E /* Debug */,
-				30FA9E5B2D2ECA6700A84B9E /* Release */,
+				30386C272D302EC60048542C /* Debug */,
+				30386C282D302EC60048542C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		30FA9E5C2D2ECA6700A84B9E /* Build configuration list for PBXNativeTarget "ModulationPlayground" */ = {
+		30386C292D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				30FA9E5D2D2ECA6700A84B9E /* Debug */,
-				30FA9E5E2D2ECA6700A84B9E /* Release */,
+				30386C2A2D302EC60048542C /* Debug */,
+				30386C2B2D302EC60048542C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30386C2C2D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlaygroundTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30386C2D2D302EC60048542C /* Debug */,
+				30386C2E2D302EC60048542C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30386C2F2D302EC60048542C /* Build configuration list for PBXNativeTarget "ModulationPlaygroundUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30386C302D302EC60048542C /* Debug */,
+				30386C312D302EC60048542C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 30FA9E4D2D2ECA6700A84B9E /* Project object */;
+	rootObject = 30386BFC2D302EC50048542C /* Project object */;
 }
