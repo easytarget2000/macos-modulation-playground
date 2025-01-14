@@ -5,6 +5,7 @@ final class AudioToolboxModulator : Modulator {
 
     // MARK: - Configuration
 
+    let algorithm: Algorithm = .dx7Algorithm8()
     let sampleRate: Double = 44100.0
     let durationInSec: Double = 1
     let amplitude: Double = 0.5
@@ -76,34 +77,21 @@ final class AudioToolboxModulator : Modulator {
         )
 
 
-        let aSamples = self.sineSamples(at: frequency, for: frameCount)
-        let bSamples = self.sineSamples(at: frequency * 7.5, for: frameCount)
-        let cSamples = self.sineSamples(at: frequency * 9.3, for: frameCount)
-
-        let abSamples = self.frequencyModulate(aSamples, bSamples)
-        let abcSamples = self.frequencyModulate(abSamples, cSamples)
-
-        let finalSamples = self.frequencyModulate(abcSamples, aSamples)
-        try self.queue(samples: finalSamples)
+//        let aSamples = self.sineSamples(at: frequency, for: frameCount)
+//        let bSamples = self.sineSamples(at: frequency * 7.5, for: frameCount)
+//        let cSamples = self.sineSamples(at: frequency * 9.3, for: frameCount)
+//
+//        let abSamples = self.frequencyModulate(aSamples, bSamples)
+//        let abcSamples = self.frequencyModulate(abSamples, cSamples)
+//
+//        let finalSamples = self.frequencyModulate(abcSamples, aSamples)
+        let samples
+        = self.algorithm.requestSamples(at: 440, count: frameCount)
+        try self.queue(samples: samples.map { .init($0) })
 
         AudioQueueStart(queue, nil)
     }
 
-    private func sineSamples(at frequency: Double, for count: Int) -> [Float] {
-        return (0 ..< count).map { frameIndex in
-            let time: Double
-            = .init(frameIndex) / self.sampleRate / .init(self.numberOfChannels)
-
-            return .init(amplitude * sin(2.0 * .pi * frequency * time))
-        }
-    }
-
-    private func frequencyModulate( _ a: [Float], _ b: [Float]) -> [Float] {
-        guard a.count == b.count else {
-            return a
-        }
-        return zip(a, b).map(*)
-    }
 
     private func queue(samples: [Float]) throws {
         guard let queue else {
