@@ -64,7 +64,7 @@ final class AudioToolboxModulator : Modulator {
         AudioQueueDispose(queue, true)
     }
 
-    func playSound() async throws {
+    func play(frequency: Double) async throws {
         guard let queue else {
             return
         }
@@ -74,10 +74,17 @@ final class AudioToolboxModulator : Modulator {
         let frameCount: Int = .init(
             self.sampleRate * .init(self.numberOfChannels) * self.durationInSec
         )
-        let aSamples = self.sineSamples(at: 440, for: frameCount)
-        let bSamples = self.sineSamples(at: 880, for: frameCount)
-        let combinedSamples = self.combineSamples(aSamples, bSamples)
-        try self.queue(samples: combinedSamples)
+
+
+        let aSamples = self.sineSamples(at: frequency, for: frameCount)
+        let bSamples = self.sineSamples(at: frequency * 7.5, for: frameCount)
+        let cSamples = self.sineSamples(at: frequency * 9.3, for: frameCount)
+
+        let abSamples = self.frequencyModulate(aSamples, bSamples)
+        let abcSamples = self.frequencyModulate(abSamples, cSamples)
+
+        let finalSamples = self.frequencyModulate(abcSamples, aSamples)
+        try self.queue(samples: finalSamples)
 
         AudioQueueStart(queue, nil)
     }
@@ -91,12 +98,11 @@ final class AudioToolboxModulator : Modulator {
         }
     }
 
-    private func combineSamples(_ a: [Float], _ b: [Float]) -> [Float] {
+    private func frequencyModulate( _ a: [Float], _ b: [Float]) -> [Float] {
         guard a.count == b.count else {
             return a
         }
-
-        return zip(a, b).map(+)
+        return zip(a, b).map(*)
     }
 
     private func queue(samples: [Float]) throws {
