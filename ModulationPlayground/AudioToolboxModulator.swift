@@ -69,6 +69,8 @@ final class AudioToolboxModulator : Modulator {
             return
         }
 
+        AudioQueueStop(queue, true)
+
         let frameCount: Int = .init(
             self.sampleRate * .init(self.numberOfChannels) * self.durationInSec
         )
