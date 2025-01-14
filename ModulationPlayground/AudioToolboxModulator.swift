@@ -72,35 +72,38 @@ final class AudioToolboxModulator : Modulator {
         let frameCount: Int = .init(
             self.sampleRate * .init(self.numberOfChannels) * self.durationInSec
         )
-        var samples = self.samples(for: frameCount)
-        try self.queueSamples(&samples)
+        let aSamples = self.sineSamples(at: 440, for: frameCount)
+        let bSamples = self.sineSamples(at: 880, for: frameCount)
+        let combinedSamples = self.combineSamples(aSamples, bSamples)
+        try self.queue(samples: combinedSamples)
 
         AudioQueueStart(queue, nil)
     }
 
-    private func samples(for count: Int) -> [Float] {
-        let frequency: Double = 330.0
-
+    private func sineSamples(at frequency: Double, for count: Int) -> [Float] {
         return (0 ..< count).map { frameIndex in
             let time: Double
             = .init(frameIndex) / self.sampleRate / .init(self.numberOfChannels)
-            let sample: Float
-            = .init(amplitude * sin(2.0 * .pi * frequency * time))
 
-            return if frameIndex % 8 == 0 {
-                .init(time * amplitude * .init(sample))
-            } else {
-                sample
-            }
+            return .init(amplitude * sin(2.0 * .pi * frequency * time))
         }
     }
 
-    private func queueSamples(_ samples: inout [Float]) throws {
+    private func combineSamples(_ a: [Float], _ b: [Float]) -> [Float] {
+        guard a.count == b.count else {
+            return a
+        }
+
+        return zip(a, b).map(+)
+    }
+
+    private func queue(samples: [Float]) throws {
         guard let queue else {
             return
         }
 
         let samplesCount = samples.count
+        var samples = samples
 
         var audioBuffer: AudioBuffer = .init()
         withUnsafeMutablePointer(to: &samples) { samplesData in
