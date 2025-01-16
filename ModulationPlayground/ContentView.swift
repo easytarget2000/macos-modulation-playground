@@ -15,7 +15,7 @@ struct ContentView: View {
         VStack {
             Button("Play") {
                 Task {
-                    try await modulator.play(frequency: 110)
+                    try await modulator.play(frequency: 440)
                 }
             }
         }

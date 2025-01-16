@@ -86,7 +86,7 @@ final class AudioToolboxModulator : Modulator {
 //
 //        let finalSamples = self.frequencyModulate(abcSamples, aSamples)
         let samples
-        = self.algorithm.requestSamples(at: 440, count: frameCount)
+        = self.algorithm.requestSamples(at: frequency, count: frameCount)
         try self.queue(samples: samples.map { .init($0) })
 
         AudioQueueStart(queue, nil)
